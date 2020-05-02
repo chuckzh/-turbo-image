@@ -63,6 +63,10 @@ class SimpleImage
     }
   }
 
+  public function getImageResource(){
+    return $this->image;
+  }
+
   //
   // Destroys the image resource
   //
@@ -228,15 +232,12 @@ class SimpleImage
    * @param  integer $radius  圆角半径长度默认为15,处理成圆型
    * @return [type]           [description]
    */
-  public function radius_img($originImage, $radius = 15)
+  public function radius($radius = 15)
   {
 
-    if (!($originImage instanceof SimpleImage)) {
-      $originImage = new SimpleImage($originImage);
-    }
 
-    $w  = $originImage->getWidth();
-    $h  = $originImage->getHeight();
+    $w  = $this->getWidth();
+    $h  = $this->getHeight();
     // $radius = $radius == 0 ? (min($w, $h) / 2) : $radius;
     $img = imagecreatetruecolor($w, $h);
     //这一句一定要有
@@ -247,7 +248,7 @@ class SimpleImage
     $r = $radius; //圆 角半径
     for ($x = 0; $x < $w; $x++) {
       for ($y = 0; $y < $h; $y++) {
-        $rgbColor = imagecolorat($originImage, $x, $y);
+        $rgbColor = imagecolorat($this->image, $x, $y);
         if (($x >= $radius && $x <= ($w - $radius)) || ($y >= $radius && $y <= ($h - $radius))) {
           //不在四角的范围内,直接画
           imagesetpixel($img, $x, $y, $rgbColor);
@@ -280,7 +281,8 @@ class SimpleImage
         }
       }
     }
-    return $img;
+    $this->image = $img;
+    return $this;
   }
 
   //
