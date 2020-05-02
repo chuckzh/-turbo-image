@@ -1,0 +1,26 @@
+{
+  "name": "turbo/image",
+  "description": "基于claviska/simpleimage，支持图片圆角、载入gd resource",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6.0",
+    "ext-gd": "*",
+    "league/color-extractor": "0.3.*"
+  },
+  "authors": [
+    {
+      "name": "Cory LaViska",
+      "homepage": "http://www.abeautifulsite.net/",
+      "role": "Developer"
+    },
+    {
+      "name": "turbo",
+      "role": "turbo@fenhol.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Turbo\\Image\\": "src"
+    }
+  }
+}
