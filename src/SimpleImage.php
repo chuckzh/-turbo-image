@@ -53,7 +53,7 @@ class SimpleImage
     }
 
 
-    if ('resource' == gettype($image) && 'gd' === get_resource_type($this->image)) {
+    if ( !is_null($image) && 'resource' == gettype($image) && 'gd' === get_resource_type($this->image)) {
       $this->image = $image;
       $this->mimeType = 'image/png';
     } else if (preg_match('/^data:(.*?);/', $image)) {
