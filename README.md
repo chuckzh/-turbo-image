@@ -24,6 +24,7 @@ try {
     ->flip('x')                                 // flip horizontally
     ->colorize('DarkBlue')                      // tint dark blue
     ->border('black', 10)                       // add a 10 pixel black border
+    ->radius(10)                                // add a 10 pixel border-radius
     ->overlay('watermark.png', 'bottom right')  // add a watermark image
     ->toFile('new-image.png', 'image/png')      // convert to PNG and save a copy to new-image.png
     ->toScreen();                               // output to the screen
